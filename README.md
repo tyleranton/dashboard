@@ -1,6 +1,8 @@
 # Dashboard (temp name until I come up with a new one)
 This is a dashboard that allows you to create draggable/resizable plugins. The motivation behind this is to have a customizable dashboard of any info/functionality you want such as a Twitter feed, todos, calendars, etc.
 
+![Demo](https://media.giphy.com/media/3og0IMKSbFkdNHs3Ju/giphy.gif)
+
 # Plugins
 Right now, plugins have to be manually created from within the project. In the future, the goal is to have an Atom-like plugin system.
 
