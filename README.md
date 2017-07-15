@@ -23,11 +23,11 @@ Along with these features, I'd like to create a desktop version (via Electron) a
 # Build
 Make sure you have `Node.js` installed.
 
-Clone and `cd` into the project
+### Clone and `cd` into the project
 `git clone https://github.com/tyleranton/dashboard.git`
 
-Install dependencies
+### Install dependencies
 `npm install`
 
-Run the project
+### Run the project
 `npm start`
