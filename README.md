@@ -8,7 +8,22 @@ Right now, plugins have to be manually created from within the project. In the f
 
 With that being said, creating plugins is fairly simple (assuming you know React). Under the `./src/plugins/` directory, create a folder for your plugin. All you have to do then is create your component file(s), add an `index.js` file exporting your root component, then add your plugin to `./src/plugins/index.js`.
 
-To do that final step, import your plugin, then add it to the `plugins` array wrapped in the `createPanel` HOC. If all is well, your plugin should be displayed in the dashboard at that point.
+To do that final step, import your plugin, then add it to the `plugins` array wrapped in the `createPanel` HOC.
+
+You can also configure the width, height, background color, and whether or not the panel can be resized. For example:
+```
+import { Twitter } from './twitter';
+import { Test } from './test';
+import createPanel from '../components/panel/Panel';
+
+let plugins = [
+  createPanel(Twitter, { width: '250px', bgColor: 'pink' }),
+  createPanel(Test, { width: '350px', height: '300px', resize: 'both' })
+];
+
+export default plugins;
+```
+![Configuring Panels](http://i.imgur.com/hfBGHGA.png)
 
 # Current State
 Right now the code base needs some TLC since I put it together in one night. The styles and the drag and drop logic  need to be more flexible/responsive. Until the project is more robust, it is limited to running locally right now. I do plan on deploying it as a web app, though.
