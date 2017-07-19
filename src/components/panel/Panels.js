@@ -5,6 +5,8 @@ import { DragDropContext } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
 import plugins from '../../plugins';
 
+const uuidv4 = require('uuid/v4');
+
 const Container = styled.div`
   display: flex;
   flex-direction: row;
@@ -46,7 +48,9 @@ class Panels extends React.Component {
     return (
       <Container>
         {panels.map((Panel, i) => {
-          return <Panel key={i} index={i} id={i} movePanel={this.movePanel} />;
+          return (
+            <Panel key={uuidv4()} index={i} id={i} movePanel={this.movePanel} />
+          );
         })}
       </Container>
     );

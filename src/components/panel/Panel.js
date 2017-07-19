@@ -5,29 +5,6 @@ import { DragSource, DropTarget } from 'react-dnd';
 import flow from 'lodash/flow';
 import styled from 'styled-components';
 
-const Container = styled.div`
-  padding: 1%;
-  width: 280px;
-  height: 400px;
-  margin-left: 1%;
-  margin-top: 1%;
-  background-color: #333333;
-  text-align: center;
-  cursor: move;
-  overflow: auto;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-  transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
-
-  &:active {
-    resize: both;
-    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-  }
-
-  &:hover {
-    resize: both;
-  }
-`;
-
 const panelSrc = {
   beginDrag(props) {
     return {
@@ -72,7 +49,12 @@ const collect = connect => {
   };
 };
 
-const createPanel = Plugin => {
+/**
+ * HOC providing a draggable/resizable panel
+ * @param {React.Component} Plugin - Your plugin component
+ * @param {Object} [config] - Config object for width, height, background color, and resize options.
+ */
+const createPanel = (Plugin, config) => {
   class Panel extends React.Component {
     static propTypes = {
       connectDragSource: PropTypes.func.isRequired,
@@ -82,11 +64,37 @@ const createPanel = Plugin => {
       movePanel: PropTypes.func.isRequired
     };
 
+    Container = styled.div`
+      padding: 1%;
+      width: ${config && config.width ? config.width : '250px'};
+      height: ${config && config.height ? config.height : '400px'};
+      margin-left: 1%;
+      margin-top: 1%;
+      background-color: ${config && config.bgColor
+        ? config.bgColor
+        : '#333333'};
+      text-align: center;
+      cursor: move;
+      overflow: auto;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+      transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
+
+      &:active {
+        resize: ${config && config.resize ? config.resize : 'none'};
+        box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
+          0 10px 10px rgba(0, 0, 0, 0.22);
+      }
+
+      &:hover {
+        resize: ${config && config.resize ? 'both' : 'none'};
+      }
+    `;
+
     render() {
       const { connectDragSource, connectDropTarget } = this.props;
 
       return (
-        <Container
+        <this.Container
           ref={instance => {
             const node = findDOMNode(instance);
             connectDragSource(node);
@@ -94,7 +102,7 @@ const createPanel = Plugin => {
           }}
         >
           <Plugin />
-        </Container>
+        </this.Container>
       );
     }
   }
