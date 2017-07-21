@@ -1,7 +1,7 @@
 # Dashboard (temp name until I come up with a new one)
 This is a dashboard that allows you to create draggable/resizable plugins. The motivation behind this is to have a customizable dashboard of any info/functionality you want such as a Twitter feed, todos, calendars, etc.
 
-![Demo](https://media.giphy.com/media/3og0IMKSbFkdNHs3Ju/giphy.gif)
+![Demo](https://media.giphy.com/media/xUPGGFrMkW0uNJB5kc/giphy.gif)
 
 # Plugins
 Right now, plugins have to be manually created from within the project. In the future, the goal is to have an Atom-like plugin system.
@@ -23,7 +23,7 @@ let plugins = [
 
 export default plugins;
 ```
-![Configuring Panels](http://i.imgur.com/hfBGHGA.png)
+![Configuring Panels](http://i.imgur.com/5SUO35t.png)
 
 # Current State
 Right now the code base needs some TLC since I put it together in one night. The styles and the drag and drop logic  need to be more flexible/responsive. Until the project is more robust, it is limited to running locally right now. I do plan on deploying it as a web app, though.
@@ -41,7 +41,7 @@ Along with these features, I'd like to create a desktop version (via Electron) a
 Make sure you have `Node.js` installed.
 
 ### Clone and `cd` into the project
-`git clone https://github.com/tyleranton/dashboard.git`
+`git clone https://github.com/tyleranton/dashboard.git && cd dashboard`
 
 ### Install dependencies
 `npm install`
