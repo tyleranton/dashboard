@@ -4,6 +4,7 @@ import { Timeline } from 'react-twitter-widgets';
 export const Twitter = () => {
   return (
     <div>
+      <h3>Twitter</h3>
       <Timeline
         dataSource={{
           sourceType: 'URL',

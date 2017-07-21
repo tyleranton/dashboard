@@ -4,9 +4,9 @@ import { Todoist } from './todoist';
 import createPanel from '../components/panel/Panel';
 
 let plugins = [
-  createPanel(Twitter, { width: '250px', bgColor: 'pink' }),
-  createPanel(Test, { width: '350px', height: '300px', resize: 'both' }),
-  createPanel(Todoist)
+  createPanel(Twitter, { width: '250px', height: '475px' }),
+  createPanel(Todoist, { resize: 'both' }),
+  createPanel(Test, { width: '350px', height: '300px', resize: 'both' })
 ];
 
 export default plugins;

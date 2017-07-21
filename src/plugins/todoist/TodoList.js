@@ -11,16 +11,19 @@ const Container = styled.div`
   overflow: scroll;
 `;
 
-const TodoList = ({ todos }) => {
+const TodoList = ({ todos, completeTodo }) => {
   return (
     <Container>
-      {todos.map(todo => <Todo key={uuid()} todo={todo} />)}
+      {todos.map(todo =>
+        <Todo key={uuid()} todo={todo} completeTodo={completeTodo} />
+      )}
     </Container>
   );
 };
 
 TodoList.propTypes = {
-  todos: PropTypes.array.isRequired
+  todos: PropTypes.array.isRequired,
+  completeTodo: PropTypes.func.isRequired
 };
 
 export default TodoList;

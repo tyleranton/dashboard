@@ -45,7 +45,8 @@ const panelTarget = {
 
 const collect = connect => {
   return {
-    connectDragSource: connect.dragSource()
+    connectDragSource: connect.dragSource(),
+    connectDragPreview: connect.dragPreview()
   };
 };
 
@@ -74,8 +75,7 @@ const createPanel = (Plugin, config) => {
         ? config.bgColor
         : '#333333'};
       text-align: center;
-      cursor: move;
-      overflow: auto;
+      overflow: hidden;
       box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
       transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
 
@@ -90,17 +90,35 @@ const createPanel = (Plugin, config) => {
       }
     `;
 
+    Draggable = styled.div`
+      cursor: move;
+      text-align: right;
+    `;
+
     render() {
-      const { connectDragSource, connectDropTarget } = this.props;
+      const {
+        connectDragSource,
+        connectDragPreview,
+        connectDropTarget
+      } = this.props;
 
       return (
         <this.Container
           ref={instance => {
             const node = findDOMNode(instance);
-            connectDragSource(node);
+            connectDragPreview(node);
             connectDropTarget(node);
           }}
         >
+          <this.Draggable
+            ref={instance => {
+              const node = findDOMNode(instance);
+              connectDragSource(node);
+            }}
+          >
+            <i className="fa fa-bars" />
+          </this.Draggable>
+
           <Plugin />
         </this.Container>
       );

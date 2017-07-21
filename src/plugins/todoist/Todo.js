@@ -8,6 +8,7 @@ const Container = styled.div`
   background-color: #555;
   margin: 1%;
   display: table;
+  cursor: pointer;
 `;
 
 const Content = styled.span`
@@ -16,9 +17,9 @@ const Content = styled.span`
   padding: 5%;
 `;
 
-const Todo = ({ todo }) => {
+const Todo = ({ todo, completeTodo }) => {
   return (
-    <Container>
+    <Container onClick={() => completeTodo(todo)}>
       <Content>
         {todo.content}
       </Content>
