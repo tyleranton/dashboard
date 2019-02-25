@@ -25,7 +25,6 @@ let plugins = [
 
 export default plugins;
 ```
-![Configuring Panels](http://i.imgur.com/5SUO35t.png)
 
 # Current State
 Right now the code base needs some TLC since I put it together in one night. The styles and the drag and drop logic  need to be more flexible/responsive. Until the project is more robust, it is limited to running locally right now. I do plan on deploying it as a web app, though.
